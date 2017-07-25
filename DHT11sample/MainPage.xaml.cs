@@ -17,7 +17,7 @@ namespace DHT11sample
     public sealed partial class MainPage : Page
     {
         Dht11Sensor dht11;
-        public static int errorCount1 = 0, errorCount2 = 0, errorCount3 = 0;
+        public static int errorCount = 0;
         private const int PIN_NUM = 4;
         private DispatcherTimer timer;
 
@@ -49,14 +49,8 @@ namespace DHT11sample
 
             if (0 != result)
             {
-                if (1 == result)
-                    ++errorCount1;
-                else if (2 == result)
-                    ++errorCount2;
-                else
-                    ++errorCount3;
-
-                statusText.Text = String.Format("#1 Error : {0:d}, #2 Error : {1:d}, #3 Error : {2:d}", errorCount1, errorCount2, errorCount3);
+                
+                statusText.Text = String.Format("ErrorCount : {0:d}", ++errorCount);
             }
             else
             {
